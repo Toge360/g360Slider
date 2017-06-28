@@ -4,6 +4,13 @@ a standalone JavaScript Slider
 ## Info
 Responsive, touchable, dragable
 
+Works only with just *one* Slider per Page at the moment.
+I´m working on it ...
+
+draggable="false" and ondragstart="return false;"
+has to write by Hand to the <img>
+I´m working on it ...
+
 ## Config
 nothing yet
 
