@@ -103,6 +103,18 @@ SOFTWARE.*/
 	}, false);
 	
 	
+	// Event-Listener for all Elements (Li) of bulNav
+	var bullets = bulnavElement.getElementsByTagName('li'); // make Array
+	for (var l = 0 ; l < bullets.length ; ++l) {
+		bullets[l].addEventListener("click", function() {
+			tappedElement = this;
+			thisId = tappedElement.dataset.id;
+			tapHandler(tappedElement,thisId);
+		});
+	}
+	
+	
+	
 	// TOUCH ////////////////////////////////////////////////////////////////////////////////////
 
 	
@@ -413,7 +425,6 @@ SOFTWARE.*/
 	
 	
 	
-	
 	function tapHandler(tappedElement,thisId) {	
 		newPosition = motherwidth*thisId; // neue Position ermitteln
 		slide(newPosition,thisId);
@@ -421,12 +432,22 @@ SOFTWARE.*/
 	
 	
 	function slide(newPosition,thisId) {
+		
 		element.classList.add('cssanim'); // add anim class to animate with css
 		element.style.left = -newPosition+'px'; 	
-
 		setCurrent();
-
 		mother.dataset.current = thisId; // write current Element id to mother
+		checkTrigger();
+
+	}
+	
+	
+	function checkTrigger() {	
+		currentElement = Number(mother.dataset.current);
+		console.log(currentElement); 
+
+		if (currentElement === 0) {ltriggerElement.style.opacity = ".1";} else {ltriggerElement.style.opacity = "1";}
+		if (currentElement === (elNumber-1)) {rtriggerElement.style.opacity = ".1";} else {rtriggerElement.style.opacity = "1";}	
 	}
 	
 	
@@ -526,6 +547,8 @@ SOFTWARE.*/
 		ts.insertAdjacentHTML('beforeend', rightTrigger);
 		rtriggerElement = document.getElementById('rtrigger');
 		
+		ltriggerElement.style.opacity = ".1"; // left on start "disabled"
+		
 		
 		
 		
@@ -545,18 +568,10 @@ SOFTWARE.*/
 		element.classList.remove('cssanim');
 		element.style.left = -firstLeft+'px';
 
-		// Event-Listener for all Elements (Li) of bulNav
-		var bullets = bulnavElement.getElementsByTagName('li'); // make Array
-		for (var l = 0 ; l < bullets.length ; ++l) {
-			bullets[l].addEventListener("click", function() {
-				tappedElement = this;
-				thisId = tappedElement.dataset.id;
-				tapHandler(tappedElement,thisId);
-			});
-		}
-
-
 	} // setup
+	
+	
+	
 	
 	
 	})();

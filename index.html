@@ -19,7 +19,8 @@
 	ul.bullnav li.current {background:rgba(255,255,255,.8);}
 	
 	
-	.triggernav {position:absolute;top:50%;margin-top:-20px;width:40px;height:40px;line-height:40px;background:rgba(0,0,0,.5);border-radius:100%;cursor:pointer;background-image:url(assets/trigger_arrow.svg);background-size:cover;background-position:center center;}
+	.triggernav {position:absolute;top:50%;margin-top:-20px;width:40px;height:40px;line-height:40px;background:rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.5);border-radius:100%;cursor:pointer;background-image:url(assets/trigger_arrow.svg);background-size:cover;background-position:center center;
+	-moz-transition: opacity ease-out .2s;-webkit-transition: opacity ease-out .2s;-o-transition: opacity ease-out .2s;-ms-transition: opacity ease-out .2s;transition: opacity ease-out .2s;}
 	#ltrigger {left:10px;-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);transform: rotate(180deg);}
 	#rtrigger {right:10px;}
 </style>
