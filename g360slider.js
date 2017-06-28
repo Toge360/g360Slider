@@ -86,32 +86,7 @@ SOFTWARE.*/
 
 	
 	
-	// Listen for triggerclicks
-	rtriggerElement.addEventListener("click", function() {
-		currentElement = Number(mother.dataset.current); // get current Element
-		thisId = currentElement+1;
-		newPosition = motherwidth*thisId; // neue Position ermitteln
-		if(thisId<elNumber) {slide(newPosition,thisId);}
-	}, false);
 	
-	ltriggerElement.addEventListener("click", function() {
-		currentElement = Number(mother.dataset.current); // get current Element
-		thisId = currentElement-1;
-		newPosition = motherwidth*thisId; // neue Position ermitteln
-		if(thisId>=0) {slide(newPosition,thisId);}
-		
-	}, false);
-	
-	
-	// Event-Listener for all Elements (Li) of bulNav
-	var bullets = bulnavElement.getElementsByTagName('li'); // make Array
-	for (var l = 0 ; l < bullets.length ; ++l) {
-		bullets[l].addEventListener("click", function() {
-			tappedElement = this;
-			thisId = tappedElement.dataset.id;
-			tapHandler(tappedElement,thisId);
-		});
-	}
 	
 	
 	
@@ -567,6 +542,35 @@ SOFTWARE.*/
 		var firstLeft = dummywidth*currentElement; // erster left wert
 		element.classList.remove('cssanim');
 		element.style.left = -firstLeft+'px';
+		
+		
+		// Event-Listener for all Elements (Li) of bulNav
+		var bullets = bulnavElement.getElementsByTagName('li'); // make Array
+		for (var l = 0 ; l < bullets.length ; ++l) {
+			bullets[l].addEventListener("click", function() {
+				tappedElement = this;
+				thisId = tappedElement.dataset.id;
+				tapHandler(tappedElement,thisId);
+			});
+		}
+		
+		// Listen for triggerclicks
+		rtriggerElement.addEventListener("click", function() {
+			currentElement = Number(mother.dataset.current); // get current Element
+			thisId = currentElement+1;
+			newPosition = motherwidth*thisId; // neue Position ermitteln
+			if(thisId<elNumber) {slide(newPosition,thisId);}
+		}, false);
+
+		ltriggerElement.addEventListener("click", function() {
+			currentElement = Number(mother.dataset.current); // get current Element
+			thisId = currentElement-1;
+			newPosition = motherwidth*thisId; // neue Position ermitteln
+			if(thisId>=0) {slide(newPosition,thisId);}
+
+		}, false);
+		
+		
 
 	} // setup
 	
