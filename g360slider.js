@@ -522,7 +522,10 @@ SOFTWARE.*/
 		ts.insertAdjacentHTML('beforeend', rightTrigger);
 		rtriggerElement = document.getElementById('rtrigger');
 		
-		ltriggerElement.style.opacity = ".1"; // left on start "disabled"
+		checkTrigger();
+		
+		
+		//ltriggerElement.style.opacity = ".1"; // left on start "disabled"
 		
 		
 		
