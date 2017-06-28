@@ -32,6 +32,5 @@ g360slider.js
 </ul>
 </div>
 ```
-
-"MIT License":https://github.com/Toge360/g360Slider/blob/master/LICENSE.txt © 2017 Tobias Gerlach (https://twitter.com/toge360).
+[MIT License](https://github.com/Toge360/g360Slider/blob/master/LICENSE.txt) © 2017 Tobias Gerlach (https://twitter.com/toge360).
 
