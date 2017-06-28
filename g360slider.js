@@ -60,14 +60,17 @@ SOFTWARE.*/
 	var aLinks;
 	var ltriggerElement;
 	var rtriggerElement;
-	setup(element,mother); // call Setup
-		
-	// no scrolling when touching
-	element.addEventListener('touchstart', function(e) {e.preventDefault();}, false);
-	element.addEventListener('touchmove', function(e) {e.preventDefault();}, false);
+	var isMobile;
 	
+	// check, if mobile
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		isMobile = true;
+	} else {
+		isMobile = false;
+	}
 
-	
+	setup(element,mother); // call Setup
+
 	// Listen for orientation changes 
 	window.addEventListener("orientationchange", function() {
 		bulnavElement.parentNode.removeChild(bulnavElement);
@@ -76,13 +79,15 @@ SOFTWARE.*/
 		setup(element,mother); // call Setup
 	}, false); 
 
-	// Listen for resize changes 
-	window.addEventListener("resize", function() {
-		bulnavElement.parentNode.removeChild(bulnavElement);
-		ltriggerElement.parentNode.removeChild(ltriggerElement);
-		rtriggerElement.parentNode.removeChild(rtriggerElement);
-		setup(element,mother); // call Setup
-	}, false); 
+	// Listen for resize changes (Desktop only) 
+	if (!isMobile) {
+		window.addEventListener("resize", function() {
+			bulnavElement.parentNode.removeChild(bulnavElement);
+			ltriggerElement.parentNode.removeChild(ltriggerElement);
+			rtriggerElement.parentNode.removeChild(rtriggerElement);
+			setup(element,mother); // call Setup
+		}, false); 
+	}
 
 	
 	
@@ -119,6 +124,13 @@ SOFTWARE.*/
 
 	
 	element.ontouchmove = function (event) {
+		
+		
+		if(movetime>5){
+			// if longer than 5, scrolling gets disabled
+			event.preventDefault();
+		}
+		
 		way = 0;
 		way = event.touches[0].clientX; // get Drag-Way
 		element.style.left = ((leftPos-touchdown)+way)+'px';
@@ -133,6 +145,7 @@ SOFTWARE.*/
 
 	element.ontouchend = function () {
 		
+		event.preventDefault();
 		clearInterval(myTimer);
 		
 		
@@ -459,6 +472,8 @@ SOFTWARE.*/
 		// Setup
 		elNumber = 0;
 		bullNav = '';
+		
+		
 
 		currentElement = Number(mother.dataset.current); // get current Element if there
 
