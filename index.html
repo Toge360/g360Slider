@@ -7,15 +7,21 @@
 
 
 <style>
-	.g360_tslider {position:relative;width:100%;max-width:800px;height:auto;overflow:hidden;}	
+	.g360_tslider {position:relative;width:100%;height:auto;overflow:hidden;}	
 	ul#tslides {float:left;position:relative;width:auto;height:auto;top:0;left:0;padding:0;margin:0;list-style-type:none;cursor:move}
 	ul#tslides.cssanim {-moz-transition: left ease-out .2s;-webkit-transition: left ease-out .2s;-o-transition: left ease-out .2s;-ms-transition: left ease-out .2s;transition: left ease-out .2s; }
-	ul#tslides li {float:left;position:relative;height:auto;padding:0;margin:0;background-color:rgba(0,0,0,.5);}
+	ul#tslides li {float:left;position:relative;height:auto;padding:0;margin:0;background-color:rgba(0,0,0,.05);overflow:hidden;}
 	ul#tslides li img {float:left;position:relative;height:auto;width:100%;padding:0;margin:0;}
 	ul#tslides li img:active {outline: 0;color: transparent;} 
 	ul.bullnav {float:left;position:absolute;width:auto;max-width:100%;height:auto;bottom:10px;left:50%;padding:0;margin:0;list-style-type:none;}
-	ul.bullnav li {float:left;position:relative;width:15px;height:15px;padding:0;margin:0 5px 0 0;background:#000;border-radius:100%;color:#fff;cursor:pointer;}
-	ul.bullnav li.current {background:#fff;}
+	ul.bullnav li {float:left;position:relative;width:15px;height:15px;padding:0;margin:0 5px 0 0;background:rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.5);border-radius:100%;color:#fff;cursor:pointer;
+-moz-transition: background ease-out .2s;-webkit-transition: background ease-out .2s;-o-transition: background ease-out .2s;-ms-transition: background ease-out .2s;transition: background ease-out .2s;}
+	ul.bullnav li.current {background:rgba(255,255,255,.8);}
+	
+	
+	.triggernav {position:absolute;top:50%;margin-top:-20px;width:40px;height:40px;line-height:40px;background:rgba(0,0,0,.5);border-radius:100%;cursor:pointer;background-image:url(assets/trigger_arrow.svg);background-size:cover;background-position:center center;}
+	#ltrigger {left:10px;-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);transform: rotate(180deg);}
+	#rtrigger {right:10px;}
 </style>
 
 </head>

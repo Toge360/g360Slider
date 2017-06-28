@@ -36,6 +36,8 @@
 	var bulnavLi;
 	var checkWay;
 	var aLinks;
+	var ltriggerElement;
+	var rtriggerElement;
 	setup(element,mother); // call Setup
 		
 	// no scrolling when touching
@@ -47,20 +49,36 @@
 	// Listen for orientation changes 
 	window.addEventListener("orientationchange", function() {
 		bulnavElement.parentNode.removeChild(bulnavElement);
+		ltriggerElement.parentNode.removeChild(ltriggerElement);
+		rtriggerElement.parentNode.removeChild(rtriggerElement);
 		setup(element,mother); // call Setup
 	}, false); 
 
 	// Listen for resize changes 
 	window.addEventListener("resize", function() {
 		bulnavElement.parentNode.removeChild(bulnavElement);
+		ltriggerElement.parentNode.removeChild(ltriggerElement);
+		rtriggerElement.parentNode.removeChild(rtriggerElement);
 		setup(element,mother); // call Setup
 	}, false); 
 
 	
 	
+	// Listen for triggerclicks
+	rtriggerElement.addEventListener("click", function() {
+		currentElement = Number(mother.dataset.current); // get current Element
+		thisId = currentElement+1;
+		newPosition = motherwidth*thisId; // neue Position ermitteln
+		if(thisId<elNumber) {slide(newPosition,thisId);}
+	}, false);
 	
-	
-	
+	ltriggerElement.addEventListener("click", function() {
+		currentElement = Number(mother.dataset.current); // get current Element
+		thisId = currentElement-1;
+		newPosition = motherwidth*thisId; // neue Position ermitteln
+		if(thisId>=0) {slide(newPosition,thisId);}
+		
+	}, false);
 	
 	
 	// TOUCH ////////////////////////////////////////////////////////////////////////////////////
@@ -463,14 +481,31 @@
 
 		}
 		
+		
+		// Trigger Navigation
+		var leftTrigger = '<div id="ltrigger" class="triggernav"></div>';
+		var rightTrigger = '<div id="rtrigger" class="triggernav"></div>';
+		
+		
 		// set Width to ul#tslides; uses number of lis
 		element.style.width = 100*i+"%"; 
 		element.style.left = 0; 
 
-		// Building BulNav
+		// Building BulNav & TriggerNav
 		var ts = document.getElementById('tslider0');
+		// BulNav
 		ts.insertAdjacentHTML('beforeend', '<ul id="bullnav0" class="bullnav">'+bullNav+'</ul>');
 		bulnavElement = document.getElementById('bullnav0');
+		
+		// Trigger
+		ts.insertAdjacentHTML('beforeend', leftTrigger);
+		ltriggerElement = document.getElementById('ltrigger');
+		
+		ts.insertAdjacentHTML('beforeend', rightTrigger);
+		rtriggerElement = document.getElementById('rtrigger');
+		
+		
+		
 		
 		var bnstyle = window.getComputedStyle(bulnavElement); // gets all Stylevalues 
 		var bnwidth = parseInt(bnstyle.getPropertyValue('width'), 10); 
