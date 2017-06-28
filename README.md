@@ -1,31 +1,26 @@
-# getPosts
-Facebook to Homepage Tool
-<<<<<<< HEAD
-=======
+# g360Slider
+a standalone JavaScript Slider
 
 ## Info
-
-Die Daten werden als JSON in einer TXT Datei gespeichert.
-Aktualisiert wird die Textdatei über den Aufruf des Scriptes getposts.php?pid=[Facebook-Seiten-ID]
-Dies sollte normalerweise über einen Cronjob erfolgen.
-
-Die Textdatei bekommt die Namensstruktur "[Object]_[Facebook-Seiten-ID].txt" (Bsp.: feed_142391185799397.txt)
+Responsive, touchable, dragable
 
 ## Config
-data-fid = Facebook ID der Seite
-data-max = Anzahl der Ausgabeelemente
-data-debug = Console shows JSON
+nothing yet
 
 ## Needed
-g360getposts.js
-jQuery
+g360slider.js
 
-## Alle Meldungen ausgeben
+## Usage
 ```
-<div id="g360_getposts" data-fid="[Facebook-Seiten-ID]" data-max="10" data-debug="1"></div>
+<div id="tslider0" class="g360_tslider">
+<ul id="tslides">
+	<li><img src="media/slide1.jpg" alt="" title="" draggable="false" ondragstart="return false;"/></li>
+	<li><img src="media/slide2.jpg" alt="" title="" draggable="false" ondragstart="return false;" /></li>
+	<li><img src="media/slide3.jpg" alt="" title="" draggable="false" ondragstart="return false;" /></li>
+	<li><img src="media/slide1.jpg" alt="" title="" draggable="false" ondragstart="return false;" /></li>
+	<li><img src="media/slide2.jpg" alt="" title="" draggable="false" ondragstart="return false;" /></li>
+	<li><img src="media/slide3.jpg" alt="" title="" draggable="false" ondragstart="return false;" /></li>
+</ul>
+</div>
 ```
 
-## Alle Alben ausgeben
-```
-<div id="g360_getalbums" data-fid="[Facebook-Seiten-ID]" data-debug="1"></div>
-```
