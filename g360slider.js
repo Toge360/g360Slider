@@ -145,15 +145,15 @@ SOFTWARE.*/
 
 	element.ontouchend = function () {
 		
-		event.preventDefault();
+		//event.preventDefault();
 		clearInterval(myTimer);
-		
 		
 		// LINK KLICKS UNTERBINDEN WENN BEWEGT WURDE
 		aLinks = element.getElementsByTagName('a');
 		for (var l = 0 ; l < aLinks.length ; ++l) {
 			aLinks[l].addEventListener("click", function(event) {
-				if (pimove > 50) {
+				if (pimove > 500) {
+					alert("S");
 					console.log('prevent cause '+pimove); 
 					event.preventDefault();
 				}
@@ -430,16 +430,16 @@ SOFTWARE.*/
 	}
 	
 	
-	function checkTrigger() {	
+	function checkTrigger() {
+		
 		currentElement = Number(mother.dataset.current);
-		console.log(currentElement); 
-
 		if (currentElement === 0) {ltriggerElement.style.opacity = ".1";} else {ltriggerElement.style.opacity = "1";}
 		if (currentElement === (elNumber-1)) {rtriggerElement.style.opacity = ".1";} else {rtriggerElement.style.opacity = "1";}	
 	}
 	
 	
 	function setCurrent() {
+		
 		// delete "current"-class from bulnav li
 		currentElement = Number(mother.dataset.current);
 		navElement = bulnavElement.querySelector('[data-id="'+currentElement+'"]'); // "This" Element
@@ -447,6 +447,7 @@ SOFTWARE.*/
 		// add "current"-class to actual bulnav li
 		navElement = bulnavElement.querySelector('[data-id="'+thisId+'"]'); // "This" Element
 		navElement.className = "current";
+		
 	}
 	
 
